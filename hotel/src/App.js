@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { createBrowserRouter, RouterProvider,  Navigate } from 'react-router-dom';
+import HotelDetail from './component/HotelDetail';
+import HotelList from './component/HotelList';
+import { ErrorBoundary } from './component/ErrorBoundary';
 
-function App() {
+// Define your routes using createBrowserRouter
+const router = createBrowserRouter([
+  {
+    path: '/hotels',
+    element: <HotelList />,
+  },
+  {
+    path: '/hotels/:id',
+    element: <HotelDetail />,
+  },
+  {
+    path: '*',
+    element: <Navigate to="/hotels" />,
+  },
+]);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary> {/* Wrapping the RouterProvider with ErrorBoundary */}
+      <RouterProvider router={router} />
+    </ErrorBoundary>
   );
-}
+};
 
 export default App;
