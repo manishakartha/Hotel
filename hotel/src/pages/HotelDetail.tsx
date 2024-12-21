@@ -27,7 +27,7 @@ const HotelDetail = () => {
       }
     
       if (error || !hotel) {
-        return <p>Hotel Not Found</p>;
+        return <p className='error-message'>Hotel Not Found</p>;
       }
 
     return(

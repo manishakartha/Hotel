@@ -22,7 +22,7 @@ const HotelsList = () => {
       }
     return(
         <>
-        
+          <h2 className='header'>HOTEL LIST</h2>
          <div className="hotels-list">
             {hotels.map((hotel) => (
           <HotelCard key={hotel.id} hotel={hotel} />
